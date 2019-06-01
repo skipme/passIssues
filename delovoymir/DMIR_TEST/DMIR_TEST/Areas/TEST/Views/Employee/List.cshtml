@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jqueryui", "~/bundles/jqgrid")
+}
+<h2>List</h2>
+
+<style>
+    #pager5 input {
+        width: 12px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var mygrid = $("#list5").jqGrid({
+            url: '@Url.Action("Fetch")',
+            datatype: "json",
+            colNames: ['Имя', 'Фамилия', 'Отчество', 'Отдел', 'Должность', 'Оклад'],
+            colModel: [
+                { name: 'id', index: 'a', width: 120 },
+                { name: 'invdate', index: 'b', width: 120 },
+                { name: 'last', index: 'c', width: 120 },
+                { name: 'dep', index: 'd', width: 40 },
+                { name: 'pos', index: 'e', width: 90 },
+                { name: 'sal', index: 's', width: 90 }
+            ],
+            rowNum: 10,
+            height: 265, width: 700,
+            mtype: "POST",
+            pager: '#pager5',
+            rowList: [10, 20, 30],
+            sortname: 'id',
+            viewrecords: true,
+            rownumbers: true,
+            sortorder: "desc",
+            gridview: true,
+            caption: "Список"
+        });
+        jQuery("#list5").jqGrid('navGrid', '#pager5', { edit: false, add: false, del: false, search: false, refresh: false });
+
+        $("#searchb").click(function () {
+            var url = '@Url.Action("Fetch")' + '?srch_name=' + $("#searcht").val() + '&srch_dep=' + $("#searchdep").val();
+             $("#list5").jqGrid('setGridParam', { url: url, page: 1 }).trigger("reloadGrid");
+         });
+    });
+   
+</script>
+
+<label>ФИО</label><input type="text" id="searcht" value="" />
+<label>Отдел</label><input type="text" id="searchdep" value="" />
+<input type="button" id="searchb" value="Поиск" />
+
+<table id="list5"></table>
+<div id="pager5"></div>

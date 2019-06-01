@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="pbModelStoreContainer">
+          <EntitySet Name="PB_RECORDS" EntityType="pbModel.Store.PB_RECORDS" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="PB_RECORDS">
+          <Key>
+            <PropertyRef Name="PBR_ID" />
+          </Key>
+          <Property Name="PBR_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PBR_FAMILY_NAME" Type="varchar" Nullable="false" MaxLength="228" />
+          <Property Name="PBR_NAME" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="PBR_PHONE_NUMBER" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="pbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PB_RECORDS" EntityType="pbModel.PB_RECORDS" />
+        </EntityContainer>
+        <EntityType Name="PB_RECORDS">
+          <Key>
+            <PropertyRef Name="PBR_ID" />
+          </Key>
+          <Property Name="PBR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PBR_FAMILY_NAME" Type="String" Nullable="false" MaxLength="228" Unicode="false" FixedLength="false" />
+          <Property Name="PBR_NAME" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="PBR_PHONE_NUMBER" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pbModelStoreContainer" CdmEntityContainer="pbEntities">
+          <EntitySetMapping Name="PB_RECORDS">
+            <EntityTypeMapping TypeName="pbModel.PB_RECORDS">
+              <MappingFragment StoreEntitySet="PB_RECORDS">
+                <ScalarProperty Name="PBR_ID" ColumnName="PBR_ID" />
+                <ScalarProperty Name="PBR_FAMILY_NAME" ColumnName="PBR_FAMILY_NAME" />
+                <ScalarProperty Name="PBR_NAME" ColumnName="PBR_NAME" />
+                <ScalarProperty Name="PBR_PHONE_NUMBER" ColumnName="PBR_PHONE_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

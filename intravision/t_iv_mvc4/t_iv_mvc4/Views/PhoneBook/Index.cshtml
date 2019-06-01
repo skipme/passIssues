@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "тк.Список";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список</h2>
+<style type="text/css">
+    table tbody tr:hover {
+        background-color: whitesmoke;
+    }
+</style>
+
+<div style="position: relative; left: 15%">
+    <form style="position:relative; left: 5%"><input type="text" name="filter" placeholder="поиск" value="@Request.Params["filter"]" /></form>
+    <p style="position:relative; left: -10%"><a href="@Url.Action("Add")">(+) Добавить запись</a>&nbsp;&nbsp;<a href="@Url.Action("CSV")">CSV</a>&nbsp;&nbsp; </p>
+    
+<table>
+    <thead><tr><th></th>
+        <th>Фамилия</th><th>Имя</th><th>Телефон</th></tr></thead>
+    <tbody>
+        @foreach (PhoneBook.PB_RECORDS rec in ViewBag.List)
+        {
+            <tr>
+                <td><a href="@Url.RouteUrl("Edit", new {recid = rec.PBR_ID})">Редактировать</a></td>
+                <td>@rec.PBR_FAMILY_NAME</td><td>@rec.PBR_NAME</td><td>@rec.PBR_PHONE_NUMBER</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<br /><br />
+

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "EditAdd";
+}
+
+<h2>@(ViewBag.record == null ? "Добавление записи" : ("Редактирование записи №") + ViewBag.record.PBR_ID)</h2>
+
+<div style="position: relative; left: 15%">
+    <form method="post">
+        @if (ViewBag.record != null)
+        { 
+            <input type="hidden" name="recid" value="@ViewBag.record.PBR_ID" />
+            <dl class="dl-horizontal">
+                <dt>Фамилия</dt>
+                <dd>
+                    <input name="fam_name" value="@ViewBag.record.PBR_FAMILY_NAME" type="text" /></dd>
+                <dt>Имя</dt>
+                <dd>
+                    <input name="name" value="@ViewBag.record.PBR_NAME" type="text" /></dd>
+                <dt>Телефон</dt>
+                <dd>
+                    <input name="tel" value="@ViewBag.record.PBR_PHONE_NUMBER" type="tel" /></dd>
+            </dl>
+        }
+        else
+        {
+            <dl class="dl-horizontal">
+                <dt>Фамилия</dt>
+                <dd>
+                    <input name="fam_name" value="" type="text" placeholder="Фамилия" /></dd>
+                <dt>Имя</dt>
+                <dd>
+                    <input name="name" value="" type="text" placeholder="Имя" /></dd>
+                <dt>Телефон</dt>
+                <dd>
+                    <input name="tel" value="" type="tel" placeholder="+7 111 111 11 11" /></dd>
+            </dl>
+        }
+        <input type="submit" value="@(ViewBag.record == null ? "Добавить" : "Изменить")"/>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿@model backend.Objects.Employee
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<form action="@Url.Action("Edit")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <table>
+        <tr>
+            <td><label>Name</label> <input type="text" name="FirstName" value="@Html.Encode(Model.Name)" /></td>
+            <td><label>Email</label> <input type="text" name="Email" value="@Html.Encode(Model.Email)" /></td>
+        </tr>
+        <tr>
+           <td> <label>FamilyName</label> <input type="text" name="FamilyName" value="@Html.Encode(Model.FamilyName)" /></td>
+            <td> <label>Salary</label> <input type="text" name="FamilyName" value="@Html.Encode(Model.Salary.ToString("### ### ##0.00", System.Globalization.CultureInfo.InvariantCulture))"readonly="readonly" style="color:steelblue" /></td>
+        </tr>
+        <tr>
+            <td><label>LastName</label> <input type="text" name="LastName" value="@Html.Encode(Model.LastName)" /></td>
+        </tr>
+        <tr>
+           <td><label>Position</label> <input type="text" name="LastName" value="@Html.Encode(Model.Position)" readonly="readonly" style="color:gray" /></td>
+            <td><label>Department</label> <input type="text" name="LastName" value="@Html.Encode(Model.Department)" readonly="readonly" style="color:gray" /></td>
+        </tr>
+        <tr><td></td>
+            <td style="text-align:right">
+                <input type="submit" value="Save" /></td>
+        </tr>
+    </table>
+   
+   
+</form>
